@@ -1,0 +1,123 @@
+ 
+    .dropaheadcontainer{
+      width: auto;
+     float: left;
+    
+    }
+    
+    input.typeaheadsearch {
+      position: relative;
+      z-index: 2;
+      width: 130px;
+      font-size: 12px;
+       margin-left: 0px;
+      
+    }
+       .dropaheadDropdownButton {
+  margin-left: 28px;
+    height: 26px;
+    position: relative; 
+    width: 26px;
+    z-index: 3;
+	background-color:#00bfff;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	text-decoration:none;
+
+
+
+    }
+    .dropaheadDropdownButton:hover {
+
+	background-color:#019ad2;
+    }
+    .dropaheadDropdownButton:active {
+	top:1px;
+}
+
+    
+
+    .suggestions {
+
+      padding: 0;
+      position: relative;
+      transition: ease-in;
+      box-shadow: 0 2px 1px 0 #dcdcdc,0 -2px 1px 0 #dcdcdc;;
+
+    -webkit-animation: fadein .5s; 
+            animation: fadein .5s;
+    }
+    
+    .suggestionsoption {
+      background: white;
+      border-bottom: 1px solid #D8D8D8;
+      padding: 10px;
+      transition: background 0.2s;
+      display: flex;
+       
+      
+      text-transform: capitalize;
+    }
+  /*.suggestionsoption:hover {
+      background: gray;
+     
+  }*/
+     .suggestionselected {
+      background: gray;
+     
+  }
+ 
+  
+    
+    span.population {
+      font-size: 12px;
+    }
+    
+    .details {
+      text-align: center;
+      font-size: 10px;
+    }
+    
+    .hl {
+      background: #ffc600;
+    }
+    
+    .love {
+      text-align: center;
+      line-height: 2;
+    }
+    
+    a {
+      color: black;
+      background: rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+    .typeaheadDropdownButton {
+    margin-left: -25px;
+    height: 25px;
+    width: 25px;
+    }
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
