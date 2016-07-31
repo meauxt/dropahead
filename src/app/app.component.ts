@@ -9,6 +9,8 @@ import {DropaheadComponent} from './dropahead'
 })
 export class AppComponent {
   title = 'app works!';
+    alabama={ "name": "Alabama",
+        "abbreviation": "AL"}
   options = [
     {
         "name": "Alabama",
