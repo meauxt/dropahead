@@ -1,6 +1,6 @@
 
 import { Component, Provider, forwardRef, Input, Output, 
-    EventEmitter, OnInit,ElementRef,Inject,AfterContentInit,HostListener,AfterViewChecked,
+    EventEmitter, OnInit,ElementRef,Inject,AfterContentInit,HostListener,AfterViewChecked,HostBinding,
     ViewChild,Renderer} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, CORE_DIRECTIVES} from "@angular/common";
 
@@ -19,14 +19,12 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = new Provider(
   templateUrl: 'dropahead.component.html',
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
   styleUrls: ['dropahead.component.css'],
-   host: {
-    '(document:click)': 'onDOMClick($event)',
-  }
+
 })
 export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterViewChecked{
 
     @ViewChild('typeaheadInputElement') typeaheadInputElement;
-
+    @ViewChild('suggestionDiv')suggestionDiv:ElementRef;
     //this get highlight on click and arrow click
     highlightedOption;
     highlightedOptionIndex=-1
@@ -86,20 +84,7 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterVie
     }
     logger(any) { console.log(any) }
    
-    optionClickHandler(option:any){
-
-        
-    this.highlightedOption = option;
-    this.selectedOption = option
-       if(  this.selectedOption == this.highlightedOption && this.fieldName){
-          //fix for selecting the field twice it for the same value it wont reflect it in the input element    
-          this.typeaheadInputElement.nativeElement.value=this.selectedOption[this.fieldName]
-         }
-    this.onChangeCallback(option)
-    //to clear the current suggestion so after user select one if click on the field again nothing going to be shown
-    this.suggestions = [];
-    this.suggestionsVisiable=false;
-    }
+  
 
     //input
     search(query,isObject?:boolean) {
@@ -159,23 +144,31 @@ this.highlightedOption=null;
         }
 }
 
+logHeight(){
+   console.log("scroll height : "+this.suggestionDiv.nativeElement.scrollHeight)
+   console.log("scroll Calculated"+ (this.suggestions.length)*39);
+   
+}
 
 keyHandler(event){
 console.log(event.keyCode);
-
     
     switch (event.keyCode) {
         
 
         case 38: 
-        console.log("Key : Down Arrow");
+        console.log("Key : Up Arrow");
+        if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=39;
+
         if(this.highlightedOptionIndex <= this.suggestions.length &&  this.highlightedOptionIndex>=0){
-           
+        console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
+
         this.highlightedOptionIndex-=1
         this.highlightedOption=this.suggestions[this.highlightedOptionIndex];}
         //if there is no more options up then reset the index to 0
         if(this.highlightedOptionIndex==-1){
-          
+        this.suggestionDiv.nativeElement.scrollTop =this.suggestionDiv.nativeElement.scrollHeight;
+
             this.highlightedOptionIndex=this.suggestions.length-1
               this.highlightedOption=this.suggestions[this.highlightedOptionIndex];
               
@@ -186,7 +179,10 @@ console.log(event.keyCode);
         case 40:
          console.log("Key : Down Arrow");
             if(this.highlightedOptionIndex < this.suggestions.length){
-           
+            if(this.suggestionDiv.nativeElement.scrollTop<=this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop +=39;
+            if(this.suggestionDiv.nativeElement.scrollTop==this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop =0;
+            console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
+            
       this.highlightedOptionIndex+=1;          
       this.highlightedOption=this.suggestions[this.highlightedOptionIndex];
 
@@ -251,7 +247,20 @@ console.log(event.keyCode);
 
     }
 }
+  optionClickHandler(option:any){
 
+        
+    this.highlightedOption = option;
+    this.selectedOption = option
+       if(  this.selectedOption == this.highlightedOption && this.fieldName){
+          //fix for selecting the field twice it for the same value it wont reflect it in the input element    
+          this.typeaheadInputElement.nativeElement.value=this.selectedOption[this.fieldName]
+         }
+    this.onChangeCallback(option)
+    //to clear the current suggestion so after user select one if click on the field again nothing going to be shown
+    this.suggestions = [];
+    this.suggestionsVisiable=false;
+    }
     inputChangehandler(event,isObject?:boolean){
         this.highlightedOptionIndex=-1;
         
@@ -287,7 +296,7 @@ console.log(event.keyCode);
     this.selectedOption=null   }
            
     }
-
+    @HostListener('document:click', ['$event'])
     onDOMClick(event) {
     if (!this._eref.nativeElement.contains(event.target)) {
     this.suggestionsVisiable=false;

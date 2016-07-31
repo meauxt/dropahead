@@ -2,6 +2,7 @@
     .dropaheadcontainer{
       width: 140px;
      float: left;
+ 
     
     }
     
@@ -41,7 +42,7 @@
 	top:1px;
 }
 
-    
+  
 
     .suggestions {
   height: auto;
@@ -51,7 +52,7 @@
       position: relative;
       transition: ease-in;
       box-shadow: 0 2px 1px 0 #dcdcdc,0 -2px 1px 0 #dcdcdc;;
-
+  overflow: scroll; 
     -webkit-animation: fadein .5s; 
             animation: fadein .5s;
     }

@@ -1,13 +1,13 @@
- <div class="dropaheadcontainer" *ngIf="options">
+ <div  class="dropaheadcontainer" *ngIf="options">
   <form class="dropahead-form" >
     <!--if the option are array of string the first input will appear
     the (input) passing flag for if the options are object
      -->
    <input *ngIf="!fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,false)" class="dropaheadsearch" type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="selectedOption"  > 
     <input *ngIf="fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,true)" class="dropaheadsearch" type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngModel]="getSelectedOption()"  >
-
    <button class="dropaheadDropdownButton" (click)="dropdownHandler()">↓</button>
-   <ul *ngIf="suggestionsVisiable" class="suggestions">
+ 
+   <ul *ngIf="suggestionsVisiable" class="suggestions" #suggestionDiv >
  <span *ngIf="fieldName" >   <li  *ngFor="let option of suggestions" class="suggestionsoption" [class.suggestionselected]="option == highlightedOption" 
       (click)="optionClickHandler(option)" (mouseenter)="onMouseOver($event,option)">{{ option[fieldName] }}</li>
 </span>
@@ -17,6 +17,7 @@
      
   </span>
   </ul>
- 
+
+   <a (click)="logHeight()">logElement</a>
     </form>
   </div>
