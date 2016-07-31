@@ -1,6 +1,6 @@
 
 import { Component, Provider, forwardRef, Input, Output, 
-    EventEmitter, OnInit,ElementRef,Inject,AfterContentInit,HostListener,
+    EventEmitter, OnInit,ElementRef,Inject,AfterContentInit,HostListener,AfterViewChecked,
     ViewChild,Renderer} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, CORE_DIRECTIVES} from "@angular/common";
 
@@ -23,7 +23,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = new Provider(
     '(document:click)': 'onDOMClick($event)',
   }
 })
-export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterContentInit{
+export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterViewChecked{
 
     @ViewChild('typeaheadInputElement') typeaheadInputElement;
 
@@ -40,6 +40,9 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterCon
     @Input()
     fieldName
 
+    @Input()
+    initValue;
+
     preOption;
 
     //control the visibility for the suggestions
@@ -54,8 +57,8 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterCon
  	onTouchedCallback: (_:any) => void = noop ;
     onChangeCallback: (_:any) => void = noop ;
 
-    ngAfterContentInit(){
-        this.onChangeCallback("");
+    ngAfterViewChecked(){
+       
 
     }
     writeValue(value: any) {
@@ -75,14 +78,14 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterCon
 
     ngOnInit() { 
         //getting setting the value on the field on init
-
-          
+        if(this.initValue){
+        this.selectedOption=this.initValue}
     }
     constructor(private _eref: ElementRef ,private _renderer:Renderer) {
    
     }
     logger(any) { console.log(any) }
-
+   
     optionClickHandler(option:any){
 
         
