@@ -13,11 +13,9 @@
 </span>
   <span *ngIf="!fieldName" > 
      <li *ngFor="let option of suggestions" class="suggestionsoption" [class.suggestionselected]="option == highlightedOption" 
-      (click)="optionClickHandler(option)" (mouseenter)="onMouseOver($event,option)">{{option}} {{fieldName}} YO</li>
+      (click)="optionClickHandler(option)" (mouseenter)="onMouseOver($event,option)">{{option}}</li>
      
   </span>
   </ul>
-
-   <a (click)="logHeight()">logElement</a>
     </form>
   </div>

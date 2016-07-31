@@ -21,44 +21,51 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = new Provider(
   styleUrls: ['dropahead.component.css'],
 
 })
-export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterViewChecked{
+export class DropaheadComponent implements OnInit ,ControlValueAccessor{
 
     @ViewChild('typeaheadInputElement') typeaheadInputElement;
     @ViewChild('suggestionDiv')suggestionDiv:ElementRef;
+    //start search when the input is more than @input
+    @Input()
+    searchMinChar=1
+
+    //the fieldname to display when you are passing the Option as Array of Object 'not string'
+    @Input()
+    fieldName
+
+    //initialize value for the field 
+    @Input()
+    initValue;
+
+    //array of options
+    @Input()
+    options;
+
+    //array of filtered options
+    suggestions=[];
+
+    //the selected value ngModel Output()
+    //TODO : Event Emmiter
+    selectedOption;
+
     //this get highlight on click and arrow click
     highlightedOption;
     highlightedOptionIndex=-1
 
-    //the selected value ngModel Output()
-    selectedOption;
+    
 
-    //start search when the input is more than @input
-    searchMinChar=1
-    //Support for Object this should be an input for the field name
-    @Input()
-    fieldName
 
-    @Input()
-    initValue;
-
-    preOption;
-
+ 
     //control the visibility for the suggestions
     suggestionsVisiable:boolean;
-    //this will be input for the typeahead options @Input()
-    @Input()
-    options;
-    suggestions=[];
+
+    
 
     //The internal data model
     private _value: any = '';
  	onTouchedCallback: (_:any) => void = noop ;
     onChangeCallback: (_:any) => void = noop ;
 
-    ngAfterViewChecked(){
-       
-
-    }
     writeValue(value: any) {
     this._value=    this.fieldName ? this.selectedOption=value[this.fieldName]:value
     }
@@ -80,16 +87,16 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor,AfterVie
         this.selectedOption=this.initValue}
     }
     constructor(private _eref: ElementRef ,private _renderer:Renderer) {
-   
     }
+
+
     logger(any) { console.log(any) }
    
   
 
-    //input
     search(query,isObject?:boolean) {
 this.highlightedOption=null;
-    //this is to remove any character may break the regex :)
+    //this is to remove any character may break the regex, Accept only letters and numbers..
       query.value = query.value.replace(/[^\/\w\s]/g,'');
         this.suggestions = [];
         query.value.length>=this.searchMinChar?this.suggestionsVisiable=true:this.suggestionsVisiable=false
@@ -119,7 +126,7 @@ this.highlightedOption=null;
          else if (splited.length>1){
              for (var index = 0; index < splited.length; index++) {
                  var word = splited[index];
-                 
+              
                 
                  
                regPattern.test(word)?this.suggestions.push(this.options[i]):null
@@ -136,7 +143,7 @@ this.highlightedOption=null;
              
          }
             if(this.suggestions.length==0){
-                console.log("YES!!!!!");
+           
             this.highlightedOption=null;
              
          }
@@ -296,6 +303,7 @@ console.log(event.keyCode);
     this.selectedOption=null   }
            
     }
+
     @HostListener('document:click', ['$event'])
     onDOMClick(event) {
     if (!this._eref.nativeElement.contains(event.target)) {
