@@ -179,8 +179,7 @@ console.log(event.keyCode);
         case 40:
          console.log("Key : Down Arrow");
             if(this.highlightedOptionIndex < this.suggestions.length){
-            if(this.suggestionDiv.nativeElement.scrollTop<=this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop +=39;
-            if(this.suggestionDiv.nativeElement.scrollTop==this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop =0;
+            if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop +=39;
             console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
             
       this.highlightedOptionIndex+=1;          
@@ -192,6 +191,7 @@ console.log(event.keyCode);
         if(this.highlightedOptionIndex ==this.suggestions.length){
             this.highlightedOptionIndex=0
             this.highlightedOption=this.suggestions[this.highlightedOptionIndex];
+         this.suggestionDiv.nativeElement.scrollTop =0;
 
 
         }
