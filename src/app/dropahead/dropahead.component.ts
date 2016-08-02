@@ -29,6 +29,9 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
     @Input()
     searchMinChar=1
 
+    @Output()
+    hasFocus=new EventEmitter();
+
     //the fieldname to display when you are passing the Option as Array of Object 'not string'
     @Input()
     fieldName
@@ -287,6 +290,7 @@ console.log(event.keyCode);
 
     onFocus(event:Event){
       this.onTouchedCallback("")
+              this.hasFocus.emit(true)
         if(this.selectedOption){
             
 //        this.selectedOption.length>=this.searchMinChar?this.suggestionsVisiable=true:this.suggestionsVisiable=false
@@ -295,6 +299,7 @@ console.log(event.keyCode);
       //  this.suggestionsVisiable=true
     }
     onBlur(event:Event){
+        this.hasFocus.emit(false)
         var inputvalue =this.typeaheadInputElement.nativeElement.value
     console.log("option Is Valid ? "+this.isValidOption(inputvalue));
     
