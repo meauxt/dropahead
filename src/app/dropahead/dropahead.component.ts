@@ -67,7 +67,7 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
     onChangeCallback: (_:any) => void = noop ;
 
     writeValue(value: any) {
-    this._value=    this.fieldName ? this.selectedOption=value[this.fieldName]:value
+        this.selectedOption=value
     }
 
     registerOnChange(fn: any) {
@@ -286,7 +286,7 @@ console.log(event.keyCode);
 }
 
     onFocus(event:Event){
-      
+      this.onTouchedCallback("")
         if(this.selectedOption){
             
 //        this.selectedOption.length>=this.searchMinChar?this.suggestionsVisiable=true:this.suggestionsVisiable=false
@@ -299,7 +299,9 @@ console.log(event.keyCode);
     console.log("option Is Valid ? "+this.isValidOption(inputvalue));
     
     if(!this.isValidOption(inputvalue)){
-    this.typeaheadInputElement.nativeElement.value="" 
+    this.typeaheadInputElement.nativeElement.value="" ;
+        this.onChangeCallback(null)
+
     this.selectedOption=null   }
            
     }

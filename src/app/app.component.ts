@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
+import { Component,} from '@angular/core';
 import {DropaheadComponent} from './dropahead'
+import {ControlGroup,Control, Validators,FORM_DIRECTIVES,CORE_DIRECTIVES,FormBuilder} from "@angular/common"
+
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  directives:[DropaheadComponent]
+  directives:[DropaheadComponent,FORM_DIRECTIVES]
 })
 export class AppComponent {
-  title = 'app works!';
+
+constructor( _fb:FormBuilder){
+      this.stateNameController = new Control(this.options[4], Validators.required);
+         this.testForm = _fb.group({
+      'stateNameController': this.stateNameController});
+}
+  stateNameController:Control;
+  testForm:ControlGroup;
+
+
+
+  title = 'Dropahead';
     alabama={ "name": "Alabama",
         "abbreviation": "AL"}
   options = [
@@ -249,4 +262,9 @@ export class AppComponent {
         "abbreviation": "WY"
     }
 ]
+
+logger(value:any){
+    console.log(value);
+    
+}
 }
