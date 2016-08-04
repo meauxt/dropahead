@@ -49,6 +49,7 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
 
     //the selected value ngModel Output()
     //TODO : Event Emmiter
+
     selectedOption;
 
     //this get highlight on click and arrow click
@@ -68,7 +69,6 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
     private _value: any = '';
  	onTouchedCallback: (_:any) => void = noop ;
     onChangeCallback: (_:any) => void = noop ;
-
     writeValue(value: any) {
         this.selectedOption=value
     }
@@ -79,8 +79,12 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
 
     registerOnTouched(fn: any) {
       this.onTouchedCallback = fn;
-      
-
+    }
+    set value(value){
+        this.selectedOption=value
+    }
+    get value(){
+        return this.selectedOption;
     }
   
 
