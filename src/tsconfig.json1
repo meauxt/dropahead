@@ -19,5 +19,5 @@
   "files": [
     "main.ts",
     "typings.d.ts"
-  ]
+  exclude : ['']
 }

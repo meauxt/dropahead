@@ -13,7 +13,7 @@
     "compileOnSave": false,
     "buildOnSave": false,
     "filesGlob" : [
-        "**/*.ts",
+        "dropahead.ts",
         "!node_modules/**"
     ]
 }
