@@ -1,5 +1,7 @@
 # Dropahead
 
+
+
 ## Installation :
 Navigate to the root folder of your project with the terminal and use the command :
 npm install dropahead --save
@@ -11,9 +13,11 @@ Open angular-cli-build.js and add the following line  to vendorNpmFiles array:
       'dropahead/**/*.js'
 
 Open system-config.js and add this line to the cliSystemConfigPackages array :
+
      "dropahead": {"defaultExtension": "js"}
      
 and under System.config  add this line to the map array :
+
       "dropahead": 'vendor/dropahead'
 
 
