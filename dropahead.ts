@@ -1,1 +1,1 @@
-export {DropaheadComponent} from './src/dropahead.component';
+export {DropaheadComponent} from './src/dropahead/dropahead.component';

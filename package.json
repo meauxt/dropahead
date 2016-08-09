@@ -1,16 +1,19 @@
 {
   "name": "dropahead",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "angular-cli": {},
+  "author": {
+    "name": "Mohamad Tarbin",
+    "url": "www.github.com/meauxt"
+  },
   "scripts": {
     "tsc": "tsc",
     "start": "npm run tsc"
-
   },
   "private": false,
+  "typings": "./dropahead.d.ts",
   "devDependencies": {
-    "typescript": "1.8.10",
+    "typescript": "^1.8.10",
     "typings": "1.3.1"
   }
 }
