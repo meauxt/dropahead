@@ -5,7 +5,7 @@
     
     }
 
-.myInput {
+.dropahead-input {
 position: absolute;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@ position: absolute;
     outline: 0 !important;
 
 }
-#input-group-container-background {
+.input-group-container-background {
 position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +43,7 @@ position: absolute;
 .input-group-container{
     position: relative;
     width: auto;
-
+    height: 40px;
 
 }
 .dropahead-button{
@@ -61,7 +61,6 @@ position: absolute;
 }
 .suggestion-container-background{
 position: absolute;
-margin-top: 40px;
  width: 216px;
   height: 125px;
   padding: 0px;
@@ -74,77 +73,27 @@ margin-top: 40px;
   filter: blur(2px); /* Firefox 35+, eventually all */
 }
 .suggestion-container{
-  margin-top: 40px;
+  margin-top: -3px;
 position: relative;
     width: 215px;
     height: 160px;
     overflow: hidden;
 }
 
-
-
-
-
-
-
-.dropaheadDiv {
-  height: 30px !important;
-  border: 2px #87ceda solid;
-  border-radius: 3px;
-  width: 250px;
-  max-width: 300px;
-}
-
-input.dropaheadsearch {
-  position: relative;
-  z-index: 2;
-  font-size: 12pt;
-  border: none !important;
-  background-color: #fff;
-  opacity: 1.0;
-  outline: 0 !important;
-  padding-left: 10px;
-  width: 90% !important;
-  padding-right: 10px;
-}
-
-.dropaheadDropdownButton {
-
-  height: 30px !important;
-  position: relative;
-  width: 30px !important;
-  z-index: 3;
-  background-color: #87ceda;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-size: 12px;
-  text-decoration: none;
-  box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
-  /*margin-left: 45px !important;*/
-}
-
-.suggestionButton {
-  transform: rotate(180deg);
-}
-
 .suggestions {
-margin-top: 40px;
     height: auto;
     max-height: 125px;
     width: 230px;
     padding: 0;
+    z-index: 1000;
     position: absolute;
     display: block;
     transition: ease-in;
     overflow: auto;
-  -webkit-animation: fadein .5s;
-  animation: fadein .5s;
-  z-index: 1000 !important;
-  
-  background-color: none;
+    -webkit-animation: fadein .5s;
+    animation: fadein .5s;
+    margin: 0;
+    background-color: none;
 
 }
 
@@ -153,16 +102,10 @@ margin-top: 40px;
   background-color: none;
   color: white;
   padding: 10px;
-  transition: background 0.2s;
+  transition: background 0.2s ease-in-out;
   display: flex;
-
-  text-transform: capitalize;
 }
 
-/*.suggestionsoption:hover {
-    background: gray;
-
-}*/
 .suggestionselected {
   background: rgba(255,255,255, 0.5);
   color: black;
@@ -170,43 +113,11 @@ margin-top: 40px;
 
 }
 
-span.population {
-  font-size: 12px;
-}
-
-.details {
-  text-align: center;
-  font-size: 10px;
-}
-
-.hl {
-  background: #ffc600;
-}
-
-.love {
-  text-align: center;
-  line-height: 2;
-}
-
-a {
-  color: black;
-  background: rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-}
-
-.dropaheadDropdownButton {
-  height: 25px;
-  width: 25px;
-  margin-left: -7px;
-}
-
 @keyframes fadein {
   from {
     opacity: 0;
   }
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 /* Firefox < 16 */
@@ -229,10 +140,4 @@ a {
   }
 }
 
-button.clean {
 
-  background: transparent;
-  border: none;
-  font-size: 12px;
-
-}

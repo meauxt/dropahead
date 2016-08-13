@@ -161,7 +161,7 @@ this.highlightedOption=null;
 
 logHeight(){
    console.log("scroll height : "+this.suggestionDiv.nativeElement.scrollHeight)
-   console.log("scroll Calculated"+ (this.suggestions.length)*39);
+   console.log("scroll Calculated"+ (this.suggestions.length)*38);
    
 }
 
@@ -173,7 +173,7 @@ console.log(event.keyCode);
 
         case 38: 
         console.log("Key : Up Arrow");
-        if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=40;
+        if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=38;
 
         if(this.highlightedOptionIndex <= this.suggestions.length &&  this.highlightedOptionIndex>=0){
         console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
@@ -194,7 +194,7 @@ console.log(event.keyCode);
         case 40:
          console.log("Key : Down Arrow");
             if(this.highlightedOptionIndex < this.suggestions.length){
-            if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight&&this.highlightedOption) this.suggestionDiv.nativeElement.scrollTop +=40;
+            if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight&&this.highlightedOption) this.suggestionDiv.nativeElement.scrollTop +=38;
             console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
             
       this.highlightedOptionIndex+=1;          
