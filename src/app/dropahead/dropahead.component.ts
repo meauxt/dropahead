@@ -152,6 +152,7 @@ this.highlightedOption=null;
             if(this.suggestions.length==0){
            
             this.highlightedOption=null;
+            this.suggestionsVisiable=false;
              
          }
   
@@ -172,7 +173,7 @@ console.log(event.keyCode);
 
         case 38: 
         console.log("Key : Up Arrow");
-        if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=39;
+        if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=40;
 
         if(this.highlightedOptionIndex <= this.suggestions.length &&  this.highlightedOptionIndex>=0){
         console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
@@ -193,7 +194,7 @@ console.log(event.keyCode);
         case 40:
          console.log("Key : Down Arrow");
             if(this.highlightedOptionIndex < this.suggestions.length){
-            if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight) this.suggestionDiv.nativeElement.scrollTop +=39;
+            if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight&&this.highlightedOption) this.suggestionDiv.nativeElement.scrollTop +=40;
             console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
             
       this.highlightedOptionIndex+=1;          
@@ -217,6 +218,10 @@ console.log(event.keyCode);
          console.log( this.suggestions );
          console.log(this.suggestionsVisiable);
          
+         if(this.typeaheadInputElement.nativeElement.value==""){
+             this.dropdownHandler();
+             break;
+         }
          
          if( this.highlightedOption && this.fieldName){
           //fix for selecting the field twice it for the same value it wont reflect it in the input element    
@@ -283,13 +288,17 @@ console.log(event.keyCode);
         
     }
     dropdownHandler(){
+        if(!this.suggestionsVisiable ){
     this.suggestions=this.options
     this.suggestionsVisiable = true;
     //dropdown need the field to be emtpy to get all the value otherwise it going to query for the available value 
     //setting the time out 500 so the event wont effect the field and auto select the first option
     setTimeout(_ =>
     this._renderer.invokeElementMethod(this.typeaheadInputElement.nativeElement,'focus',[]),500)
-    
+        }
+    else {
+    this.suggestionsVisiable=false;
+    }
 }
 
     onFocus(event:Event){
