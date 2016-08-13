@@ -218,10 +218,7 @@ console.log(event.keyCode);
          console.log( this.suggestions );
          console.log(this.suggestionsVisiable);
          
-         if(this.typeaheadInputElement.nativeElement.value==""){
-             this.dropdownHandler();
-             break;
-         }
+        
          
          if( this.highlightedOption && this.fieldName){
           //fix for selecting the field twice it for the same value it wont reflect it in the input element    
@@ -235,7 +232,10 @@ console.log(event.keyCode);
         if(this.suggestionsVisiable){
             this.suggestionsVisiable=false;
         }
-        
+         if(this.typeaheadInputElement.nativeElement.value==""){
+             this.dropdownHandler();
+             break;
+         }
         //to clear the current suggestion so after user select one if click on the field again nothing going to be shown
          this.suggestions = [];
         break;
