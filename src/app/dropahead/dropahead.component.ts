@@ -117,11 +117,9 @@ this.highlightedOption=null;
             
        currentOption= currentOption[this.fieldName];
    	    }
-       console.log("the current Option : "+currentOption);
 
         var splited = currentOption.split(" "); 
         var splitedQuery= query.value.split(" ")
-        console.log(JSON.stringify(splited));
          if(currentOption == query.value ){
              this.suggestions.push(this.options[i])
          }
@@ -137,7 +135,6 @@ this.highlightedOption=null;
                 
                  
                regPattern.test(word)?this.suggestions.push(this.options[i]):null
-                console.log("testing " + word+" ..." +regPattern.test(word)); 
              }
        
          }
@@ -159,24 +156,17 @@ this.highlightedOption=null;
         }
 }
 
-logHeight(){
-   console.log("scroll height : "+this.suggestionDiv.nativeElement.scrollHeight)
-   console.log("scroll Calculated"+ (this.suggestions.length)*38);
-   
-}
-
 keyHandler(event){
-console.log(event.keyCode);
+
     
     switch (event.keyCode) {
         
 
         case 38: 
-        console.log("Key : Up Arrow");
+    //    Key : Up Arrow
         if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=38;
 
         if(this.highlightedOptionIndex <= this.suggestions.length &&  this.highlightedOptionIndex>=0){
-        console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
 
         this.highlightedOptionIndex-=1
         this.highlightedOption=this.suggestions[this.highlightedOptionIndex];}
@@ -192,10 +182,9 @@ console.log(event.keyCode);
          break;
 
         case 40:
-         console.log("Key : Down Arrow");
+        // Key : Down Arrow
             if(this.highlightedOptionIndex < this.suggestions.length){
             if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight&&this.highlightedOption) this.suggestionDiv.nativeElement.scrollTop +=38;
-            console.log("scroll " +this.suggestionDiv.nativeElement.scrollTop);
             
       this.highlightedOptionIndex+=1;          
       this.highlightedOption=this.suggestions[this.highlightedOptionIndex];
@@ -214,12 +203,8 @@ console.log(event.keyCode);
 
         case 13 :
         event.preventDefault();
-         console.log("Key : Enter ");
-         console.log( this.suggestions );
-         console.log(this.suggestionsVisiable);
-         
-        
-         
+        // Key : Enter 
+
          if( this.highlightedOption && this.fieldName){
           //fix for selecting the field twice it for the same value it wont reflect it in the input element    
           this.typeaheadInputElement.nativeElement.value=this.highlightedOption[this.fieldName]
@@ -241,11 +226,7 @@ console.log(event.keyCode);
         break;
 
         case 9 :
-         console.log("Key : TAB ");
-         console.log( this.suggestions );
-         console.log(this.suggestionsVisiable);
-         
-         
+        // Key : TAB 
          if( this.highlightedOption && this.fieldName){
           //fix for selecting the field twice it for the same value it wont reflect it in the input element    
           this.typeaheadInputElement.nativeElement.value=this.highlightedOption[this.fieldName]
@@ -316,7 +297,6 @@ console.log(event.keyCode);
         this.hasFocus.emit(false);
          this._hasfocus=false;
         var inputvalue =this.typeaheadInputElement.nativeElement.value
-    console.log("option Is Valid ? "+this.isValidOption(inputvalue));
     
     if(!this.isValidOption(inputvalue)){
     this.typeaheadInputElement.nativeElement.value="" ;
@@ -335,7 +315,6 @@ console.log(event.keyCode);
     }
     onMouseOver(event:Event, option){
     //TODO : remove css that controll hover,
-    console.log(event);
     
     this.highlightedOption=option
     this.highlightedOptionIndex=this.findOptionIndex(option);
@@ -348,11 +327,8 @@ for (var index = 0; index < this.options.length; index++) {
     
 }
     }
-    isValidOption(value){
-        console.log("isValid passed value "+value);
-        
+    isValidOption(value){        
         var option = value;
-      
         for (var index = 0; index < this.options.length; index++) {
         if(this.fieldName){
             if(value== this.options[index][this.fieldName]){
