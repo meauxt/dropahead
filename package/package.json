@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "tsc": "tsc",
-    "start": "npm run tsc",
-    "build":"npm pack && npm publish"
+    "start": "npm run tsc"
   },
   "private": false,
   "typings": "./dist/dropahead.d.ts",
