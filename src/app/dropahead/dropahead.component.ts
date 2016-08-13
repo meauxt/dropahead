@@ -31,7 +31,7 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
 
     @Output()
     hasFocus=new EventEmitter();
-
+    private _hasfocus:boolean;
     //the fieldname to display when you are passing the Option as Array of Object 'not string'
     @Input()
     fieldName
@@ -304,6 +304,7 @@ console.log(event.keyCode);
     onFocus(event:Event){
       this.onTouchedCallback("")
               this.hasFocus.emit(true)
+              this._hasfocus=true;
         if(this.selectedOption){
             
 //        this.selectedOption.length>=this.searchMinChar?this.suggestionsVisiable=true:this.suggestionsVisiable=false
@@ -312,7 +313,8 @@ console.log(event.keyCode);
       //  this.suggestionsVisiable=true
     }
     onBlur(event:Event){
-        this.hasFocus.emit(false)
+        this.hasFocus.emit(false);
+         this._hasfocus=false;
         var inputvalue =this.typeaheadInputElement.nativeElement.value
     console.log("option Is Valid ? "+this.isValidOption(inputvalue));
     
@@ -331,13 +333,21 @@ console.log(event.keyCode);
     }
     
     }
-    onMouseOver(event:Event, option:number){
+    onMouseOver(event:Event, option){
     //TODO : remove css that controll hover,
-   
+    console.log(event);
+    
     this.highlightedOption=option
-   
+    this.highlightedOptionIndex=this.findOptionIndex(option);
     }
-
+    private findOptionIndex(option): number{
+for (var index = 0; index < this.options.length; index++) {
+    if(option==this.options[index]){
+        return index;
+    }
+    
+}
+    }
     isValidOption(value){
         console.log("isValid passed value "+value);
         

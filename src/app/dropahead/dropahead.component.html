@@ -9,7 +9,7 @@
    <input *ngIf="!fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,false)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="selectedOption"  > 
     <input *ngIf="fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,true)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngModel]="getSelectedOption()"  >
    <!--<span class="dropahead-button" (click)="dropdownHandler()"><button class="clean">▾</button></span>-->
-      <button class="dropahead-button" (click)="dropdownHandler()">▾</button>
+      <button class="dropahead-button" (click)="dropdownHandler()" [class.dropahead-button-hide]="_hasfocus">▾</button>
 
      </div>
      <div  *ngIf="suggestionsVisiable" class="suggestion-container">
@@ -32,4 +32,5 @@
   </div>
     </form>
   </div>
-{{highlightedOption}}
+{{highlightedOption| json}}
+{{highlightedOptionIndex}}
