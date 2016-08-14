@@ -6,7 +6,9 @@
 
      <div class="input-group-container">
 
-  <div class="input-group-container-background" [class.input-group-container-background-invalid]="!Control.valid" [class.input-group-container-background-valid]="Control.valid && Control.touched"></div>
+  <div *ngIf="!Control" class="input-group-container-background" ></div>
+     <div *ngIf="Control"  class="input-group-container-background" [class.input-group-container-background-invalid]="!Control?.valid" [class.input-group-container-background-valid]="Control?.valid && Control?.touched"></div>
+
    <input *ngIf="!fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,false)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="selectedOption" (dblclick)="dropdownHandler()" > 
     <input *ngIf="fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,true)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngModel]="getSelectedOption()" (dblclick)="dropdownHandler()" >
 
