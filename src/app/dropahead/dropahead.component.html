@@ -6,8 +6,8 @@
 
      <div class="input-group-container">
   <div class="input-group-container-background"></div>
-   <input *ngIf="!fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,false)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="selectedOption"  > 
-    <input *ngIf="fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,true)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngModel]="getSelectedOption()"  >
+   <input *ngIf="!fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,false)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="selectedOption" (dblclick)="dropdownHandler()" > 
+    <input *ngIf="fieldName" #typeaheadInputElement (keydown)="keyHandler($event)" (input)="inputChangehandler($event,true)"  class="dropahead-input "  type="text" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngModel]="getSelectedOption()" (dblclick)="dropdownHandler()" >
    <!--<span class="dropahead-button" (click)="dropdownHandler()"><button class="clean">▾</button></span>-->
       <button class="dropahead-button" (click)="dropdownHandler()" [class.dropahead-button-hide]="_hasfocus">▾</button>
 
