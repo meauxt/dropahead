@@ -166,6 +166,7 @@ keyHandler(event){
 
         case 38: 
     //    Key : Up Arrow
+    if(this.suggestionsVisiable){
         if(this.suggestionDiv.nativeElement.scrollTop>0) this.suggestionDiv.nativeElement.scrollTop -=38;
 
         if(this.highlightedOptionIndex <= this.suggestions.length &&  this.highlightedOptionIndex>=0){
@@ -180,10 +181,11 @@ keyHandler(event){
               this.highlightedOption=this.suggestions[this.highlightedOptionIndex];
               
         }
-
+    }
          break;
 
         case 40:
+        if(this.suggestionsVisiable){
         // Key : Down Arrow
             if(this.highlightedOptionIndex < this.suggestions.length){
             if(this.suggestionDiv.nativeElement.scrollTop<this.suggestionDiv.nativeElement.scrollHeight&&this.highlightedOption) this.suggestionDiv.nativeElement.scrollTop +=38;
@@ -200,6 +202,9 @@ keyHandler(event){
          this.suggestionDiv.nativeElement.scrollTop =0;
 
 
+        }}
+        else{
+            this.dropdownHandler();
         }
             break;
 
