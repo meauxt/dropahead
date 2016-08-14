@@ -28,6 +28,8 @@ export class DropaheadComponent implements OnInit ,ControlValueAccessor{
     //start search when the input is more than @input
     @Input()
     searchMinChar=1
+    @Input()
+    Control;
 
     @Output()
     hasFocus=new EventEmitter();

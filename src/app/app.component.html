@@ -4,7 +4,7 @@
   {{title}}</h1>
  
 <form [ngFormModel]="testForm">
-  <dropahead [options]="options" [fieldName]="'name'" ngControl="stateNameController" (hasFocus)="stateNameController.hasFocus= $event" [initValue]="alabama"></dropahead>
+  <dropahead [options]="options" [fieldName]="'name'" ngControl="stateNameController" (hasFocus)="stateNameController.hasFocus= $event" [initValue]="alabama" [Control]="stateNameController"></dropahead>
 </form>
    <div >
    </div>
@@ -12,7 +12,7 @@
  <div *ngIf="!stateNameController.valid && !stateNameController.hasFocus" class="alert alert-danger col-md-2" role="alert">
 Invalid Option :(
 </div>
-
+ <img src="http://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-26.jpg" class="bg">
  <div *ngIf="stateNameController.touched && stateNameController.valid && !stateNameController.hasFocus" class="alert alert-success col-md-2" role="alert">
 Valid Option :) 
 </div>

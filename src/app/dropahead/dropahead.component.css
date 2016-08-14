@@ -25,6 +25,7 @@ position: absolute;
     outline: 0 !important;
 
 }
+
 .input-group-container-background {
 position: absolute;
     top: 0;
@@ -40,6 +41,13 @@ position: absolute;
   -webkit-filter: blur(2px); /* Chrome, Opera, etc. */
   filter: blur(2px); /* Firefox 35+, eventually all */
 }
+.input-group-container-background-invalid {
+animation: blinkinValid 1s;
+}
+.input-group-container-background-valid {
+animation: blinkValid 1s;
+}
+
 .input-group-container{
     position: relative;
     width: auto;
@@ -53,6 +61,7 @@ position: absolute;
     right: 0;
     margin: 3px 0;
     color: white;
+    opacity: 80%;
     z-index: 1;
     background: transparent;
     border: none ;
@@ -127,6 +136,38 @@ position: relative;
 
 
 }
+@keyframes blinkinValid {
+     0%   { background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);}
+    30%  {     background: rgb(173, 2, 0);
+    background: rgba(173, 2, 0, 0.60);}
+
+    40%  { background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);}
+      70%  {     background: rgb(173, 2, 0);
+    background: rgba(173, 2, 0, 0.60);}
+
+    100% { background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);}
+}
+
+
+ 
+@keyframes blinkValid {
+     0%   { background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);}
+    20%  {     background: rgb(33, 148, 0);
+  background: rgba(26, 95, 0, 0.75);}
+
+ 
+      90% {     background: rgb(33, 148, 0);
+  background: rgba(26, 95, 0, 0.75);}
+
+    100% { background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);}
+}
+
+
 
 @keyframes fadein {
   from {
