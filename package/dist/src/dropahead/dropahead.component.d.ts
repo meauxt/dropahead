@@ -6,6 +6,7 @@ export declare class DropaheadComponent implements OnInit, ControlValueAccessor 
     typeaheadInputElement: any;
     suggestionDiv: ElementRef;
     searchMinChar: number;
+    Control: any;
     hasFocus: EventEmitter<{}>;
     private _hasfocus;
     fieldName: any;

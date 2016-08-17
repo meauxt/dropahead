@@ -1,6 +1,7 @@
 {
   "name": "dropahead",
-  "version": "0.0.6",
+  "version": "0.0.9",
+  "description": "Dropdown Menu with Typeahead ",
   "license": "MIT",
   "author": {
     "name": "Mohamad Tarbin",
@@ -13,7 +14,8 @@
   ],
   "scripts": {
     "tsc": "tsc",
-    "start": "npm run tsc"
+    "start": "npm run tsc",
+    "build":"npm pack && npm publish"
   },
   "private": false,
   "typings": "./dist/dropahead.d.ts",

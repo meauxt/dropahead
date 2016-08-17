@@ -1,1 +1,1 @@
-export { DropaheadComponent } from './src/dropahead/dropahead.component';
+export { DropaheadComponent } from './dist/src/dropahead/dropahead.component';

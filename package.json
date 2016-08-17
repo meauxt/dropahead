@@ -1,6 +1,7 @@
 {
   "name": "dropahead",
-  "version": "0.0.6",
+  "version": "0.0.11",
+  "description": "Dropdown Menu with Typeahead ",
   "license": "MIT",
   "author": {
     "name": "Mohamad Tarbin",
