@@ -1,4 +1,25 @@
 # Dropahead
+      Dropdown + Typeahead = Dropahead
+
+
+
+## Main Updates :
+0.0.10 :
+      Adding Transparent Design
+      Adding CSS Animations 
+      Support in-field validation feedback 
+            
+0.0.6
+      Adding Support for ngControl
+      Adding Support for NgModel
+      Adding Focus Event As output Directive
+
+## Screenshot: 
+GIF :
+      https://raw.githubusercontent.com/meauxt/dropahead/colorful-validation/dropaheadDEMO.gif
+
+
+
 
 ## Installation :
 Navigate to the root folder of your project with the terminal and use the command :
@@ -21,6 +42,8 @@ and under System.config  add this line to the map array :
 
 
 
+## Configuration with Webpack :
+Soon...
 
 The MIT License (MIT)
 Copyright (c) 2016 Dropahead
